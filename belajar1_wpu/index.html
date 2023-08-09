@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Belajar React Js</title>
+</head>
+<body>
+    
+    <div id="root"></div>
+    <!-- React Js dan React Dom -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Babel Script -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Script Js -->
+    <script type="text/jsx">
+        const app = document.getElementById('root');
+        
+        function HomePage() {
+            const [likes, setLikes] = React.useState(0);
+
+            function handleClick(changer) {
+                return () => {
+                    const result = likes + changer;
+                    if( result >= 0 && result <= 10 ){
+                        setLikes(result);
+                    }
+                    else {
+                        setLikes("done!");
+                    }
+                };
+            }
+            
+            function handleReset()
+            {
+                setLikes(0)
+            }
+
+            return(
+                <div>
+                    <h1>Bismillah belajar react 🚀 </h1>
+                    <button onClick={handleClick(-1)}>-</button>
+                    <span>  {likes}  </span>
+                    <button onClick={handleClick(1)}>+</button>
+                    <br/>
+                    <button onClick={handleReset}>reset!</button>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<HomePage/>, root)
+    </script>
+</body>
+</html>
